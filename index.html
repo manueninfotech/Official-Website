@@ -520,8 +520,14 @@
                                 <p class="text-sm text-gray-600">System administration</p>
                             </div>
                         </div>
-                        
+
                         <div class="text-center fade-in">
+                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-md tech-icon">
+                                <div class="text-4xl mb-2">🔒</div>
+                                <h3 class="font-semibold text-gray-900 mb-2">Security</h3>
+                                <p class="text-sm text-gray-600">Protection of SAP systems</p>
+                            </div>
+                        </div>                        <div class="text-center fade-in">
                             <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg p-6 shadow-md tech-icon">
                                 <div class="text-4xl mb-2">☁️</div>
                                 <h3 class="font-semibold text-gray-900 mb-2">Cloud Connector</h3>
@@ -967,6 +973,7 @@
                             </form>
                         </div>
                         
+                        
                         <div class="fade-in">
                             <h2 class="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
                             <div class="space-y-8">
@@ -1259,9 +1266,38 @@
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData);
             
-            // Simulate form submission
-            alert('Thank you for your message! We will get back to you within 24 hours.');
-            e.target.reset();
+            
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const service = document.getElementById('service').value;
+    const budget = document.getElementById('budget').value;
+    const message = document.getElementById('message').value.trim();
+
+    // Email address to receive the message
+    const mailTo = 'manuenit@outlook.in';
+
+    let subject = encodeURIComponent('Contact Form Submission');
+    let body = encodeURIComponent(
+        `First Name: ${firstName}\n` +
+        `Last Name: ${lastName}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n` +
+        `Service Interested In: ${service}\n` +
+        `Project Budget: ${budget}\n` +
+        `Project Details:\n${message}\n`
+    );
+
+    // Create the full mailto link
+    let mailtoLink = `mailto:${mailTo}?subject=${subject}&body=${body}`;
+
+    // Open the user's default mail client
+    window.location.href = mailtoLink;
+    });
+  
         }
 
         // Enrollment modal functions
@@ -1308,5 +1344,9 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e7e2d3b48bbaaa',t:'MTc1Nzc2OTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e7e2d3b48bbaaa',t:'MTc1Nzc2OTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+
+
+
+</body>
 </html>
