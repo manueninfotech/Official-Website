@@ -3,1351 +3,1193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANUEN INFOTECH - IT Solutions & SAP Training</title>
-    <link rel="icon" href="Logo_1R.png" type="image/x-icon">
+    <title>Teas N Trees</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#003366',
-                        secondary: '#3b82f6',
-                        accent: '#06b6d4'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif, ;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .tech-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .tech-icon:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+<body class="bg-gray-50 scroll-smooth">
+    <!-- Navigation - Desktop -->
+    <nav class="desktop-only bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                            <h1 class="text-2xl custom-font text-primary cursor-pointer flex items-center gap-2" onclick="showPage('home')">
-                              <img src="Banner.png" alt="Manuen Infotech Banner" class="h-15 w-60" />
-                            </h1>
-                    </div>
+                    <button onclick="showPage('home')" class="  text-xl font-bold text-green-700 hover:text-green-800 transition-colors">
+                        <img src="TTBanner.png" alt="TTBanner" width="200" height="200"> </button>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <button onclick="showPage('home')" class="nav-link text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" data-page="home">Home</button>
-                        <button onclick="showPage('services')" class="nav-link text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" data-page="services">Services</button>
-                        <button onclick="showPage('technologies')" class="nav-link text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" data-page="technologies">Technologies</button>
-                        <button onclick="showPage('training')" class="nav-link text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" data-page="training">SAP Training</button>
-                        <button onclick="showPage('contact')" class="nav-link text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" data-page="contact">Contact</button>
-                    </div>
+                <div class="flex items-baseline space-x-4">
+                    <button onclick="showPage('home')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">Home</button>
+                    <button onclick="showPage('about')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">About</button>
+                    <button onclick="showPage('menu')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">Menu</button>
+                    <button onclick="showPage('gallery')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">Gallery</button>
+                    <button onclick="showPage('reviews')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">Reviews</button>
+                    <button onclick="showPage('contact')" class="nav-btn text-gray-700 hover:text-green-600 px-3 py-2 rounded-md   text-sm font-medium transition-colors">Contact</button>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button onclick="showPage('home')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">Home</button>
-                <button onclick="showPage('services')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">Services</button>
-                <button onclick="showPage('technologies')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">Technologies</button>
-                <button onclick="showPage('training')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">SAP Training</button>
-                <button onclick="showPage('contact')" class="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary">Contact</button>
             </div>
         </div>
     </nav>
 
-    <!-- Page Container -->
-    <div id="page-container" class="pt-16">
-        
-        <!-- Home Page -->
-        <div id="home-page" class="page-content">
-            <section class="gradient-bg text-white py-20">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">
-                            <img src="Logo_1R.png" alt="Manuen Infotech Logo" class="h-40 w-40 mx-auto" />
-                            Welcome to <span class="text-blue-950">MANUEN INFOTECH</span>
-                        </h1>
-                        <p class="text-xl md:text-2xl mb-8 fade-in max-w-3xl mx-auto">
-                            Your trusted partner for cutting-edge IT solutions, MERN stack development, mobile apps, and comprehensive SAP training
-                        </p>
-                        <div class="space-x-4 fade-in">
-                            <button onclick="showPage('services')" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                                Our Services
-                            </button>
-                            <button onclick="showPage('contact')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors">
-                                Get Started
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- About Section -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="fade-in">
-                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About MANUEN INFOTECH</h2>
-                            <p class="text-lg text-gray-600 mb-6">
-                                We are a leading IT solutions company specializing in modern web development, mobile applications, and enterprise training. With years of experience in the industry, we help businesses transform digitally and individuals advance their careers.
-                            </p>
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-primary">10+</div>
-                                    <div class="text-gray-600">Projects Completed</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold text-primary">150+</div>
-                                    <div class="text-gray-600">Students Trained</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8">
-                                <h3 class="text-xl font-semibold mb-4">Our Mission</h3>
-                                <p class="text-gray-600 mb-4">
-                                    To empower businesses and individuals through innovative technology solutions and comprehensive training programs.
-                                </p>
-                                <h3 class="text-xl font-semibold mb-4">Our Vision</h3>
-                                <p class="text-gray-600">
-                                    To be the leading IT solutions provider, bridging the gap between technology and business success.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Services Page -->
-        <div id="services-page" class="page-content hidden">
-            <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 fade-in">Our Services</h1>
-                        <p class="text-xl text-gray-600 fade-in max-w-3xl mx-auto">Comprehensive IT solutions tailored to your business needs</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">🌐</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Website Development</h3>
-                            <p class="text-gray-600 mb-4">Custom websites built with modern technologies including React, Node.js, and responsive design principles.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• Responsive Design</li>
-                                <li>• SEO Optimized</li>
-                                <li>• Fast Loading</li>
-                                <li>• Modern UI/UX</li>
-                            </ul>
-                            <button onclick="openServiceModal('Website Development')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">📱</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Mobile App Development</h3>
-                            <p class="text-gray-600 mb-4">Native and cross-platform mobile applications for iOS and Android using React Native and modern frameworks.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• iOS & Android</li>
-                                <li>• React Native</li>
-                                <li>• Cross-platform</li>
-                                <li>• App Store Ready</li>
-                            </ul>
-                            <button onclick="openServiceModal('Mobile App Development')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">⚙️</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">MERN Stack Development</h3>
-                            <p class="text-gray-600 mb-4">Full-stack web applications using MongoDB, Express.js, React, and Node.js for scalable solutions.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• MongoDB Database</li>
-                                <li>• Express.js Backend</li>
-                                <li>• React Frontend</li>
-                                <li>• Node.js Runtime</li>
-                            </ul>
-                            <button onclick="openServiceModal('MERN Stack Development')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">☁️</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Cloud Solutions</h3>
-                            <p class="text-gray-600 mb-4">Cloud deployment and management services for scalable and reliable application hosting.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• AWS/Azure/GCP</li>
-                                <li>• DevOps Integration</li>
-                                <li>• Scalable Infrastructure</li>
-                                <li>• 24/7 Monitoring</li>
-                            </ul>
-                            <button onclick="openServiceModal('Cloud Solutions')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">🔧</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">IT Consulting</h3>
-                            <p class="text-gray-600 mb-4">Strategic IT consulting to help businesses leverage technology for growth and efficiency.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• Technology Strategy</li>
-                                <li>• Digital Transformation</li>
-                                <li>• System Integration</li>
-                                <li>• Process Optimization</li>
-                            </ul>
-                            <button onclick="openServiceModal('IT Consulting')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                        
-                        <div class="bg-white rounded-xl shadow-lg p-8 card-hover fade-in border border-gray-100">
-                            <div class="text-4xl mb-4">🎯</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Custom Solutions</h3>
-                            <p class="text-gray-600 mb-4">Tailored software solutions designed specifically for your unique business requirements and challenges.</p>
-                            <ul class="text-sm text-gray-500 space-y-1 mb-6">
-                                <li>• Custom Software</li>
-                                <li>• API Development</li>
-                                <li>• Database Design</li>
-                                <li>• Integration Services</li>
-                            </ul>
-                            <button onclick="openServiceModal('Custom Solutions')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                Get Quote
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Process Section -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Our Development Process</h2>
-                        <p class="text-lg text-gray-600 fade-in">A systematic approach to deliver quality solutions</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                            <h3 class="text-xl font-semibold mb-2">Discovery</h3>
-                            <p class="text-gray-600">Understanding your requirements and business goals</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                            <h3 class="text-xl font-semibold mb-2">Planning</h3>
-                            <p class="text-gray-600">Creating detailed project roadmap and timeline</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                            <h3 class="text-xl font-semibold mb-2">Development</h3>
-                            <p class="text-gray-600">Building your solution with regular updates</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-                            <h3 class="text-xl font-semibold mb-2">Delivery</h3>
-                            <p class="text-gray-600">Testing, deployment, and ongoing support</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Technologies Page -->
-        <div id="technologies-page" class="page-content hidden">
-            <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 fade-in">Technologies We Use</h1>
-                        <p class="text-xl text-gray-600 fade-in max-w-3xl mx-auto">Cutting-edge technologies for modern, scalable solutions</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Frontend Technologies -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Frontend Technologies</h2>
-                        <p class="text-lg text-gray-600 fade-in">Creating beautiful, responsive user interfaces</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">⚛️</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">React</h3>
-                                <p class="text-sm text-gray-600">Component-based UI library</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🎨</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">HTML5/CSS3</h3>
-                                <p class="text-sm text-gray-600">Modern web standards</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">⚡</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">JavaScript</h3>
-                                <p class="text-sm text-gray-600">Dynamic programming language</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🎯</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">TypeScript</h3>
-                                <p class="text-sm text-gray-600">Typed JavaScript</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Backend Technologies -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Backend Technologies</h2>
-                        <p class="text-lg text-gray-600 fade-in">Robust server-side solutions</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🟢</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Node.js</h3>
-                                <p class="text-sm text-gray-600">JavaScript runtime</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🚀</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Express.js</h3>
-                                <p class="text-sm text-gray-600">Web application framework</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔗</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">REST APIs</h3>
-                                <p class="text-sm text-gray-600">RESTful web services</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔐</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">JWT</h3>
-                                <p class="text-sm text-gray-600">Authentication tokens</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Database Technologies -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Database Technologies</h2>
-                        <p class="text-lg text-gray-600 fade-in">Efficient data storage and management</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🍃</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">MongoDB</h3>
-                                <p class="text-sm text-gray-600">NoSQL database</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🐘</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">PostgreSQL</h3>
-                                <p class="text-sm text-gray-600">Relational database</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔴</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Redis</h3>
-                                <p class="text-sm text-gray-600">In-memory data store</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔥</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Firebase</h3>
-                                <p class="text-sm text-gray-600">Real-time database</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Mobile & Cloud -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Mobile & Cloud Technologies</h2>
-                        <p class="text-lg text-gray-600 fade-in">Cross-platform and scalable solutions</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">📱</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">React Native</h3>
-                                <p class="text-sm text-gray-600">Cross-platform mobile</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">☁️</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">AWS</h3>
-                                <p class="text-sm text-gray-600">Cloud computing</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🌐</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Azure</h3>
-                                <p class="text-sm text-gray-600">Microsoft cloud</p>
-                            </div>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔧</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Docker</h3>
-                                <p class="text-sm text-gray-600">Containerization</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- SAP Technologies -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">SAP Technologies</h2>
-                        <p class="text-lg text-gray-600 fade-in">Comprehensive SAP expertise across all major modules</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">⚡</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">ABAP</h3>
-                                <p class="text-sm text-gray-600">Advanced Business Application Programming</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🚀</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">ABAP on HANA</h3>
-                                <p class="text-sm text-gray-600">Next-gen ABAP development</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔄</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Workflow</h3>
-                                <p class="text-sm text-gray-600">Business process automation</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🛠️</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Basis</h3>
-                                <p class="text-sm text-gray-600">System administration</p>
-                            </div>
-                        </div>
-
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔒</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Security</h3>
-                                <p class="text-sm text-gray-600">Protection of SAP systems</p>
-                            </div>
-                        </div>                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">☁️</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">Cloud Connector</h3>
-                                <p class="text-sm text-gray-600">Hybrid cloud connectivity</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🔗</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">PI/PO</h3>
-                                <p class="text-sm text-gray-600">Process integration</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🌐</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">CPI</h3>
-                                <p class="text-sm text-gray-600">Cloud platform integration</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">📦</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">MM</h3>
-                                <p class="text-sm text-gray-600">Materials management</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🏭</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">EWM</h3>
-                                <p class="text-sm text-gray-600">Extended warehouse management</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">💰</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">FICO</h3>
-                                <p class="text-sm text-gray-600">Financial accounting & controlling</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">📊</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">TRM</h3>
-                                <p class="text-sm text-gray-600">Treasury & risk management</p>
-                            </div>
-                        </div>
-                        
-                        <div class="text-center fade-in">
-                            <div class="bg-gradient-to-br from-violet-50 to-violet-100 rounded-lg p-6 shadow-md tech-icon">
-                                <div class="text-4xl mb-2">🗃️</div>
-                                <h3 class="font-semibold text-gray-900 mb-2">MDG</h3>
-                                <p class="text-sm text-gray-600">Master data governance</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Enterprise Solutions -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Enterprise Solutions</h2>
-                        <p class="text-lg text-gray-600 fade-in">Business-grade technologies and tools</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 fade-in">
-                            <div class="text-4xl mb-4">🔄</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">DevOps Tools</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>• Git & GitHub</li>
-                                <li>• CI/CD Pipelines</li>
-                                <li>• Jenkins</li>
-                                <li>• Kubernetes</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-8 fade-in">
-                            <div class="text-4xl mb-4">🛡️</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Security & Testing</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>• OAuth 2.0</li>
-                                <li>• SSL/TLS</li>
-                                <li>• Jest Testing</li>
-                                <li>• Security Audits</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl p-8 fade-in">
-                            <div class="text-4xl mb-4">💼</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">Integration Platforms</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>• SAP Integration Suite</li>
-                                <li>• API Management</li>
-                                <li>• Microservices</li>
-                                <li>• Event-Driven Architecture</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Training Page -->
-        <div id="training-page" class="page-content hidden">
-            <section class="py-20 bg-gradient-to-br from-green-50 to-emerald-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 fade-in">SAP Training Programs</h1>
-                        <p class="text-xl text-gray-600 fade-in max-w-3xl mx-auto">Advance your career with our comprehensive SAP training programs led by industry experts</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Training Courses -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">⚡</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">ABAP Programming</h3>
-                            <p class="text-gray-600 mb-4">Advanced Business Application Programming with latest concepts including Object-Oriented ABAP and modern development techniques.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online/Offline</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('ABAP Programming')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('abap')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">🚀</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">ABAP on HANA</h3>
-                            <p class="text-gray-600 mb-4">Next-generation ABAP development on SAP HANA platform with Code-to-Data paradigm and advanced optimization techniques.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online/Offline</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('ABAP on HANA')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('abap_hana')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-purple-50 to-violet-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">🔄</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP Workflow</h3>
-                            <p class="text-gray-600 mb-4">Business Process Automation using SAP Workflow including custom workflow development and integration patterns.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online/Offline</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP Workflow')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('workflow')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">🛠️</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP Basis</h3>
-                            <p class="text-gray-600 mb-4">System Administration covering installation, configuration, monitoring, and performance tuning of SAP systems.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online/Offline</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP Basis')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('basis')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">🔗</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP PI/PO</h3>
-                            <p class="text-gray-600 mb-4">Process Integration/Process Orchestration for enterprise application integration and B2B communication.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP PI/PO')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('pi_po')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">☁️</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP CPI</h3>
-                            <p class="text-gray-600 mb-4">Cloud Platform Integration for modern cloud-based integration scenarios and hybrid landscapes.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP CPI')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('cpi')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">💰</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP FICO</h3>
-                            <p class="text-gray-600 mb-4">Financial Accounting and Controlling with latest S/4HANA features including Universal Journal and embedded analytics.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP FICO')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('fico')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">📊</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP TRM</h3>
-                            <p class="text-gray-600 mb-4">Treasury and Risk Management for financial risk assessment, cash management, and treasury operations.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP TRM')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('trm')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">📦</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP MM</h3>
-                            <p class="text-gray-600 mb-4">Materials Management with S/4HANA innovations including Fiori apps, simplified procurement, and advanced analytics.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP MM')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('mm')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                        
-                        <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-xl p-8 card-hover fade-in">
-                            <div class="text-4xl mb-4">🏭</div>
-                            <h3 class="text-xl font-semibold mb-4 text-gray-900">SAP EWM</h3>
-                            <p class="text-gray-600 mb-4">Extended Warehouse Management for advanced warehouse operations, automation, and supply chain optimization.</p>
-                            <div class="mb-4">
-                                <div class="text-sm text-gray-500 mb-2">Duration: 3 months (75 hours)</div>
-                                <div class="text-sm text-gray-500 mb-2">Mode: Online</div>
-                            </div>
-                            <div class="text-2xl font-bold text-primary mb-4">₹30,000</div>
-                            <button onclick="openEnrollModal('SAP EWM')" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition-colors mb-2">
-                                Enroll Now
-                            </button>
-                            <button onclick="showCourseDetails('ewm')" class="w-full border border-primary text-primary py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
-                                View Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Training Features -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Why Choose Our Training?</h2>
-                        <p class="text-lg text-gray-600 fade-in">Industry-leading SAP training with proven results</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mx-auto mb-4">👨‍🏫</div>
-                            <h3 class="text-xl font-semibold mb-2">Expert Instructors</h3>
-                            <p class="text-gray-600">Learn from certified SAP professionals with 10+ years experience</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mx-auto mb-4">💻</div>
-                            <h3 class="text-xl font-semibold mb-2">Hands-on Practice</h3>
-                            <p class="text-gray-600"> SAP system access for practical learning experience</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mx-auto mb-4">🚀</div>
-                            <h3 class="text-xl font-semibold mb-2">Real-Time Projects</h3>
-                            <p class="text-gray-600">From Classroom to Corporate: Work on Real SAP Scenarios</p>
-                        </div>
-                        <div class="text-center fade-in">
-                            <div class="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl mx-auto mb-4">💼</div>
-                            <h3 class="text-xl font-semibold mb-2">Job Support</h3>
-                            <p class="text-gray-600">Career guidance and job placement assistance</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Student Testimonials -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Student Success Stories</h2>
-                        <p class="text-lg text-gray-600 fade-in">Hear from our successful graduates</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-gray-50 rounded-xl p-6 fade-in">
-                            <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
-                            <p class="text-gray-600 mb-4">"Excellent SAP FICO training! Got placed in TCS within 2 months of completion."</p>
-                            <div class="font-semibold text-gray-900">Priya Sharma</div>
-                            <div class="text-sm text-gray-500">SAP FICO Graduate</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 rounded-xl p-6 fade-in">
-                            <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
-                            <p class="text-gray-600 mb-4">"Great hands-on experience with SAP MM. The instructors are very knowledgeable."</p>
-                            <div class="font-semibold text-gray-900">Rajesh Kumar</div>
-                            <div class="text-sm text-gray-500">SAP MM Graduate</div>
-                        </div>
-                        
-                        <div class="bg-gray-50 rounded-xl p-6 fade-in">
-                            <div class="text-yellow-400 text-xl mb-4">⭐⭐⭐⭐⭐</div>
-                            <p class="text-gray-600 mb-4">"SAP SD course helped me transition from a different field. Now working at Infosys!"</p>
-                            <div class="font-semibold text-gray-900">Anita Patel</div>
-                            <div class="text-sm text-gray-500">SAP SD Graduate</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Contact Page -->
-        <div id="contact-page" class="page-content hidden">
-            <section class="py-20 bg-gradient-to-br from-indigo-50 to-blue-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 fade-in">Get In Touch</h1>
-                        <p class="text-xl text-gray-600 fade-in max-w-3xl mx-auto">Ready to start your project or have questions? We'd love to hear from you!</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Contact Form & Info -->
-            <section class="py-16 bg-white">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div class="fade-in">
-                            <h2 class="text-3xl font-bold text-gray-900 mb-8">Let's Start a Conversation</h2>
-                            <form id="contact-form" class="space-y-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                        <input type="text" id="firstName" required 
-                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                        <input type="text" id="lastName" required 
-                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                    <input type="email" id="email" required 
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                    <input type="tel" id="phone" 
-                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Service Interested In</label>
-                                    <select id="service" required 
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                        <option value="">Select a Service</option>
-                                        <option value="website">Website Development</option>
-                                        <option value="mobile">Mobile App Development</option>
-                                        <option value="mern">MERN Stack Development</option>
-                                        <option value="sap">SAP Training</option>
-                                        <option value="cloud">Cloud Solutions</option>
-                                        <option value="consulting">IT Consulting</option>
-                                        <option value="custom">Custom Solutions</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Project Budget</label>
-                                    <select id="budget" 
-                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                                        <option value="">Select Budget Range</option>
-                                        <option value="under-50k">Under ₹50,000</option>
-                                        <option value="50k-1l">₹50,000 - ₹1,00,000</option>
-                                        <option value="1l-5l">₹1,00,000 - ₹5,00,000</option>
-                                        <option value="5l-plus">₹5,00,000+</option>
-                                        <option value="discuss">Let's Discuss</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
-                                    <textarea id="message" rows="4" required 
-                                              placeholder="Tell us about your project requirements, timeline, and any specific needs..."
-                                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                                </div>
-                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                                    Send Message
-                                </button>
-                            </form>
-                        </div>
-                        
-                        
-                        <div class="fade-in">
-                            <h2 class="text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
-                            <div class="space-y-8">
-                                <div class="flex items-start">
-                                    <div class="bg-primary text-white rounded-lg p-3 mr-4">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-900 mb-1">Email Us</h3>
-                                        <p class="text-gray-600">manuenit@outlook.in</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start">
-                                    <div class="bg-primary text-white rounded-lg p-3 mr-4">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-900 mb-1">Call Us</h3>
-                                        <p class="text-gray-600">+91 9705002334</p>
-                                        <p class="text-gray-600">+91 9703002334</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start">
-                                    <div class="bg-primary text-white rounded-lg p-3 mr-4">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-900 mb-1">Visit Us</h3>
-                                        <p class="text-gray-600">MANUEN INFOTECH</p>
-                                        <p class="text-gray-600">1st Floor, Vaarahi Enclave,</p>
-                                        <p class="text-gray-600">6/13 Brodipet, Guntur, Andhra Pradesh 522002</p>
-                                        <p class="text-gray-600">India</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-start">
-                                    <div class="bg-primary text-white rounded-lg p-3 mr-4">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-semibold text-gray-900 mb-1">Business Hours</h3>
-                                        <p class="text-gray-600">Monday - Saturday: 10:00 AM - 8:30 PM</p>
-                                        <p class="text-gray-600">Sunday: Closed</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Social Media -->
-                            <div class="mt-8">
-                                <h3 class="font-semibold text-gray-900 mb-4">Follow Us</h3>
-                                <div class="flex space-x-4">
-                                    <a href="#" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://www.linkedin.com/company/sri-vasudha-tech/" class="bg-blue-800 text-white p-3 rounded-lg hover:bg-blue-900 transition-colors">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                        </svg>
-                                    </a>
-                                    <a href="https://github.com/manueninfotech" class="bg-gray-800 text-white p-3 rounded-lg hover:bg-gray-900 transition-colors">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- FAQ Section -->
-            <section class="py-16 bg-gray-50">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 fade-in">Frequently Asked Questions</h2>
-                        <p class="text-lg text-gray-600 fade-in">Quick answers to common questions</p>
-                    </div>
-                    
-                    <div class="max-w-3xl mx-auto space-y-4">
-                        <div class="bg-white rounded-lg shadow-sm fade-in">
-                            <button onclick="toggleFAQ(1)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50">
-                                <span class="font-semibold text-gray-900">How long does a typical project take?</span>
-                                <svg class="w-5 h-5 transform transition-transform" id="faq-icon-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div id="faq-content-1" class="hidden px-6 pb-4">
-                                <p class="text-gray-600">Project timelines vary based on complexity. Simple websites take 2-4 weeks, mobile apps 6-12 weeks, and enterprise solutions 3-6 months. We provide detailed timelines during consultation.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg shadow-sm fade-in">
-                            <button onclick="toggleFAQ(2)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50">
-                                <span class="font-semibold text-gray-900">Do you provide ongoing support?</span>
-                                <svg class="w-5 h-5 transform transition-transform" id="faq-icon-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div id="faq-content-2" class="hidden px-6 pb-4">
-                                <p class="text-gray-600">Yes! We offer comprehensive support packages including maintenance, updates, bug fixes, and technical support. Our support plans are tailored to your specific needs.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white rounded-lg shadow-sm fade-in">
-                            <button onclick="toggleFAQ(3)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50">
-                                <span class="font-semibold text-gray-900">What makes your SAP training different?</span>
-                                <svg class="w-5 h-5 transform transition-transform" id="faq-icon-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div id="faq-content-3" class="hidden px-6 pb-4">
-                                <p class="text-gray-600">Our SAP training includes real system access, industry-experienced instructors, hands-on projects, certification preparation, and job placement assistance. We focus on practical skills that employers value.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
+    <!-- Navigation - Tablet -->
+    <nav class="tablet-only bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h3 class="text-2xl font-bold mb-4">
-                    <img src="Logo_1R.png" alt="Manuen Infotech Logo" class="h-10 w-10 mx-auto" />
-                    MANUEN INFOTECH</h3>
-                <p class="text-gray-400 mb-4">Transforming businesses through innovative IT solutions</p>
-                <div class="flex justify-center space-x-6">
-                    <a href="https://www.linkedin.com/company/sri-vasudha-tech/" class="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
-                    <a href="https://github.com/manueninfotech" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
-                    <a href="https://www.instagram.com/manueninfotech?igsh=MW9qZm5zNjh6MWx1eg%3D%3D&utm_source=qr " class="text-gray-400 hover:text-white transition-colors">Instagram</a>
-                    <a href="https://www.facebook.com/share/14LwBUuDTBr/" class="text-gray-400 hover:text-white transition-colors">Facebook</a>
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <button onclick="showPage('home')" class="  text-lg font-bold text-green-700 hover:text-green-800 transition-colors">                   
+                             <img src="TTBanner.png" alt="TTBanner" width="100" height="100"> </button>
+</button>
                 </div>
-                <div class="mt-6 pt-6 border-t border-gray-800">
-                    <p class="text-gray-400">&copy; 2025 MANUEN INFOTECH. All rights reserved.</p>
+                <div class="flex items-baseline space-x-3">
+                    <button onclick="showPage('home')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">Home</button>
+                    <button onclick="showPage('about')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">About</button>
+                    <button onclick="showPage('menu')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">Menu</button>
+                    <button onclick="showPage('gallery')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">Gallery</button>
+                    <button onclick="showPage('reviews')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">Reviews</button>
+                    <button onclick="showPage('contact')" class="nav-btn text-gray-700 hover:text-green-600 px-2 py-2 rounded-md   text-xs font-medium transition-colors">Contact</button>
                 </div>
             </div>
         </div>
-    </footer>
+    </nav>
 
-    <!-- Enrollment Modal -->
-    <div id="enrollment-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
-        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
-            <h3 class="text-2xl font-bold mb-4 text-gray-900">Enroll in <span id="course-name"></span></h3>
-            <form id="enrollment-form">
+    <!-- Navigation - Mobile Top -->
+    <nav class="mobile-only bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="px-4 py-3">
+            <div class="flex justify-between items-center">
+                <button onclick="showPage('home')" class="  text-sm font-bold text-green-700">
+                    <img src="TTBanner.png" alt="TTBanner" width="100" height="100">
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-700 hover:text-green-600">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button onclick="showPage('home')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">Home</button>
+                <button onclick="showPage('about')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">About</button>
+                <button onclick="showPage('menu')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">Menu</button>
+                <button onclick="showPage('gallery')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">Gallery</button>
+                <button onclick="showPage('reviews')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">Reviews</button>
+                <button onclick="showPage('contact')" class="block w-full text-left px-3 py-3 text-gray-700 hover:text-green-600 btn-touch">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navigation - Mobile Bottom -->
+    <nav class="mobile-only nav-mobile">
+        <div class="flex justify-around py-2">
+            <button onclick="showPage('home')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">🏠</span>
+                <span class="text-xs">Home</span>
+            </button>
+            <button onclick="showPage('about')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">ℹ️</span>
+                <span class="text-xs">About</span>
+            </button>
+            <button onclick="showPage('menu')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">📋</span>
+                <span class="text-xs">Menu</span>
+            </button>
+            <button onclick="showPage('gallery')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">📸</span>
+                <span class="text-xs">Gallery</span>
+            </button>
+            <button onclick="showPage('reviews')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">⭐</span>
+                <span class="text-xs">Reviews</span>
+            </button>
+            <button onclick="showPage('contact')" class="nav-btn-mobile flex flex-col items-center py-1 px-2 text-gray-600 hover:text-green-600 transition-colors">
+                <span class="  text-sm mb-1">📞</span>
+                <span class="text-xs">Contact</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-bg text-white pt-16 desktop-only tablet-only relative overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-green-900/20 to-green-900/40"></div>
+                <div class="floating-leaf absolute top-20 left-1/4 text-green-300 opacity-60   text-3xl">🍃</div>
+                <div class="floating-leaf absolute top-32 right-1/3 text-green-400 opacity-50   text-lg" style="animation-delay: 2s;">🍃</div>
+                <div class="floating-leaf absolute top-48 left-1/2 text-green-200 opacity-70   text-sm" style="animation-delay: 4s;">🍃</div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+                <div class="text-center fade-in">
+                    <img src="TTNoName.png" alt="Teas N Trees Name" class="mx-auto mb-6 w-60 h-60 ">
+                    <h1 class="responsive-title font-bold mb-6">Welcome to Teas N Trees</h1>
+                    <p class="responsive-subtitle mb-8 text-green-100">Where nature meets your perfect cup</p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showPage('menu')" class="bg-white text-green-700 px-8 py-3 rounded-full font-semibold hover:bg-green-50 transition-colors">
+                            Explore Our Menu
+                        </button>
+                        <button onclick="showPage('contact')" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-green-700 transition-colors">
+                            Visit Us Today
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Hero Section -->
+        <section class="mobile-only hero-bg text-white hero-mobile relative overflow-hidden">
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-green-900/30 to-green-900/50"></div>
+                <div class="floating-leaf absolute top-16 left-1/3 text-green-300 opacity-50   text-sm">🍃</div>
+                <div class="floating-leaf absolute top-24 right-1/4 text-green-400 opacity-60   text-lg" style="animation-delay: 3s;">🍃</div>
+            </div>
+            
+            <div class="px-4 py-12 text-center relative z-10">
+                    <img src="TTNoName.png" alt="Teas N Trees Name" class="mx-auto mb-6 w-60 h-60 ">
+                <h1 class="  text-2xl font-bold mb-4">Teas N Trees</h1>
+                <p class="  text-sm mb-8 text-green-100">Where nature meets your perfect cup</p>
+                
                 <div class="space-y-4">
-                    <input type="text" placeholder="Full Name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    <input type="email" placeholder="Email Address" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    <input type="tel" placeholder="Phone Number" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                        <option value="">Select Experience Level</option>
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Intermediate</option>
-                        <option value="advanced">Advanced</option>
-                    </select>
-                </div>
-                <div class="flex space-x-4 mt-6">
-                    <button type="button" onclick="closeEnrollModal()" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                        Cancel
+                    <button onclick="showPage('menu')" class="w-full bg-white text-green-700 py-4 px-6 rounded-full font-semibold hover:bg-green-50 transition-colors btn-touch">
+                        Explore Our Menu
                     </button>
-                    <button type="submit" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        Enroll Now
+                    <button onclick="showPage('contact')" class="w-full border-2 border-white text-white py-4 px-6 rounded-full font-semibold hover:bg-white hover:text-green-700 transition-colors btn-touch">
+                        Visit Us Today
                     </button>
                 </div>
-            </form>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="  text-3xl font-bold text-gray-800 mb-4">Why Choose Teas N Trees?</h2>
+                    <p class="  text-lg text-gray-600">Experience the difference in every cup</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center card-hover bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8">
+                        <div class="  text-3xl mb-4">🌱</div>
+                        <h3 class="  text-lg font-semibold mb-2 text-gray-800">Sustainable Sourcing</h3>
+                        <p class="text-gray-600">Fair trade and organic ingredients from trusted partners worldwide</p>
+                    </div>
+
+                    <div class="text-center card-hover bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8">
+                        <div class="  text-3xl mb-4">👨‍🍳</div>
+                        <h3 class="  text-lg font-semibold mb-2 text-gray-800">Expert Craftsmanship</h3>
+                        <p class="text-gray-600">Skilled baristas and tea masters creating perfect beverages</p>
+                    </div>
+
+                    <div class="text-center card-hover bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8">
+                        <div class="  text-3xl mb-4">🏠</div>
+                        <h3 class="  text-lg font-semibold mb-2 text-gray-800">Cozy Atmosphere</h3>
+                        <p class="text-gray-600">Comfortable spaces perfect for work, study, or relaxation</p>
+                    </div>
+
+                    <div class="text-center card-hover bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8">
+                        <div class="  text-3xl mb-4">⚡</div>
+                        <h3 class="  text-lg font-semibold mb-2 text-gray-800">Fresh Daily</h3>
+                        <p class="text-gray-600">Everything made fresh daily with the finest ingredients</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-16">
+                <h1 class="  text-3xl md:  text-4xl font-bold text-gray-800 mb-4">About Teas N Trees</h1>
+                <p class="  text-lg text-gray-600 mb-8">Where nature meets your perfect cup - discover our story, services, and what makes us special</p>
+            </div>
+
+            <!-- Service Options -->
+            <div class="mb-16">
+                <h2 class="  text-2xl font-bold text-gray-800 mb-8 text-center">Service Options</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="text-center bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 card-hover">
+                    <div class="  text-2xl mb-3">🌿</div>
+                     <h3 class="font-semibold text-gray-800 mb-2">Outdoor Seating</h3>
+                        <p class="  text-xs text-gray-600">Garden terrace dining</p>
+                    </div>
+                    <div class="text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 card-hover">
+                        <div class="  text-2xl mb-3">🤝</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">No-contact Delivery</h3>
+                        <p class="  text-xs text-gray-600">Safe & contactless</p>
+                    </div>
+                    <div class="text-center bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 card-hover">
+                        <div class="  text-2xl mb-3">🚚</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Delivery</h3>
+                        <p class="  text-xs text-gray-600">Fast & reliable</p>
+                    </div>
+                    <div class="text-center bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 card-hover">
+                        <div class="  text-2xl mb-3">🥡</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Takeaway</h3>
+                        <p class="  text-xs text-gray-600">Quick pickup</p>
+                    </div>
+                    <div class="text-center bg-gradient-to-br from-teal-50 to-cyan-50 rounded-xl p-6 card-hover">
+                        <div class="  text-2xl mb-3">🍽️</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Dine-in</h3>
+                        <p class="  text-xs text-gray-600">Cozy atmosphere</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights & Popular For -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h2 class="  text-2xl font-bold text-gray-800 mb-6">Highlights</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">☕</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Great Coffee</h3>
+                                <p class="  text-xs text-gray-600">Premium beans, expert brewing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">🍰</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Great Dessert</h3>
+                                <p class="  text-xs text-gray-600">Fresh pastries & sweet treats</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">🍃</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Great Tea Selection</h3>
+                                <p class="  text-xs text-gray-600">Curated premium teas</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">⚽</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Sport</h3>
+                                <p class="  text-xs text-gray-600">Watch games while you dine</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-2xl font-bold text-gray-800 mb-6">Popular For</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">🌙</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Dinner</h3>
+                                <p class="  text-xs text-gray-600">Evening dining experience</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">🧘</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Solo Dining</h3>
+                                <p class="  text-xs text-gray-600">Perfect for quiet moments</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 bg-white rounded-lg p-4 shadow-sm">
+                            <span class="  text-xl">💻</span>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Good for Working on Laptop</h3>
+                                <p class="  text-xs text-gray-600">WiFi & comfortable seating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offerings & Dining Options -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h2 class="  text-2xl font-bold text-gray-800 mb-6">Offerings</h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">☕</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Coffee</h3>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">🌙</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Late-night Food</h3>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">⚡</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Quick Bite</h3>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">🍽️</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Small Plates</h3>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-teal-50 to-cyan-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">🌱</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Vegan Options</h3>
+                        </div>
+                        <div class="text-center bg-gradient-to-br from-rose-50 to-pink-50 rounded-lg p-4">
+                            <span class="  text-xl mb-2 block">🥬</span>
+                            <h3 class="font-semibold text-gray-800   text-xs">Vegetarian Options</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-2xl font-bold text-gray-800 mb-6">Dining Options</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🥐</span>
+                                <span class="font-semibold text-gray-800">Brunch</span>
+                            </div>
+                            <span class="  text-xs text-gray-600">11AM - 2PM</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🍽️</span>
+                                <span class="font-semibold text-gray-800">Lunch</span>
+                            </div>
+                            <span class="  text-xs text-gray-600">12PM - 4PM</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🌙</span>
+                                <span class="font-semibold text-gray-800">Dinner</span>
+                            </div>
+                            <span class="  text-xs text-gray-600">6PM - 11PM</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🍰</span>
+                                <span class="font-semibold text-gray-800">Dessert</span>
+                            </div>
+                            <span class="  text-xs text-gray-600">All Day</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🪑</span>
+                                <span class="font-semibold text-gray-800">Seating</span>
+                            </div>
+                            <span class="  text-xs text-green-600">Available</span>
+                        </div>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">🍽️</span>
+                                <span class="font-semibold text-gray-800">Table Service</span>
+                            </div>
+                            <span class="  text-xs text-green-600">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Amenities -->
+            <div class="mb-16">
+                <h2 class="  text-2xl font-bold text-gray-800 mb-8 text-center">Amenities</h2>
+                <div class="flex justify-center">
+                    <div class="text-center bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 card-hover">
+                        <div class="  text-2xl mb-3">🚻</div>
+                        <h3 class="font-semibold text-gray-800 mb-2">Restroom</h3>
+                        <p class="  text-xs text-gray-600">Clean facilities available</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atmosphere, Crowd & Planning -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Atmosphere</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">😌</span>
+                            <span class="text-gray-800">Casual</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🏠</span>
+                            <span class="text-gray-800">Cozy</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🤫</span>
+                            <span class="text-gray-800">Quiet</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">💕</span>
+                            <span class="text-gray-800">Romantic</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">✨</span>
+                            <span class="text-gray-800">Trendy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Crowd</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">👥</span>
+                            <span class="text-gray-800">Groups</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🎓</span>
+                            <span class="text-gray-800">University Students</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Planning</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">📅</span>
+                            <span class="text-gray-800">Accepts Reservations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payments, Children & Parking -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Payments</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">💳</span>
+                            <span class="text-gray-800">Credit Cards</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">💳</span>
+                            <span class="text-gray-800">Debit Cards</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">📱</span>
+                            <span class="text-gray-800">NFC Mobile Payments</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Children</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">👶</span>
+                            <span class="text-gray-800">Good for Kids</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Parking</h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🚗</span>
+                            <span class="text-gray-800">Free Parking Lot</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🛣️</span>
+                            <span class="text-gray-800">Free Street Parking</span>
+                        </div>
+                        <div class="flex items-center space-x-3 bg-white rounded-lg p-3 shadow-sm">
+                            <span class="  text-sm">🅿️</span>
+                            <span class="text-gray-800">Plenty of Parking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Page navigation system
-        let currentPage = 'home';
-        
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => {
-                page.classList.add('hidden');
-            });
-            
-            // Show selected page
-            const targetPage = document.getElementById(pageId + '-page');
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-                currentPage = pageId;
+    <!-- Menu Page -->
+    <div id="menu-page" class="page pt-16">
+        <!-- Desktop Menu -->
+        <div class="desktop-only max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-10">
+                <h1 class="  text-3xl md:  text-4xl font-bold text-gray-800 mb-4">Our Complete Menu</h1>
+                <p class="  text-lg text-gray-600 mb-8">Crafted with love, served with care</p>
                 
-                // Update active navigation
-                updateActiveNavLink(pageId);
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button onclick="filterMenu('all')" class="menu-filter-btn active px-3 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors">All Items</button>
+                    <button onclick="filterMenu('hot-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Hot Coffee</button>
+                    <button onclick="filterMenu('cold-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Cold Coffee</button>
+                    <button onclick="filterMenu('clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Clear Teas</button>
+                    <button onclick="filterMenu('cold-clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Cold Clear Teas</button>
+                    <button onclick="filterMenu('shakes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Shakes</button>
+                    <button onclick="filterMenu('mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Mojitos</button>
+                    <button onclick="filterMenu('real-fruit-mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Real Fruit Mojitos</button>
+                    <button onclick="filterMenu('almond-gum-special')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Almond Gum Special</button>
+                    <button onclick="filterMenu('lassi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Lassi</button>
+                    <button onclick="filterMenu('cold-pressed-juices')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Cold Pressed Juices</button>
+                    <button onclick="filterMenu('fruit-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Fruit Bowls</button>
+                    <button onclick="filterMenu('desserts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Desserts</button>
+                    <button onclick="filterMenu('ice-cream-scoops')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Ice Cream Scoops</button>
+                    <button onclick="filterMenu('soups')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Soups</button>
+                    <button onclick="filterMenu('salads')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Salads</button>
+                    <button onclick="filterMenu('garlic-breadandtoasts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">garlic Breads & Toasts</button>
+                    <button onclick="filterMenu('deep-fries')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Deep Fries</button>
+                    <button onclick="filterMenu('potato-snacks')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Potato Snacks</button>
+                    <button onclick="filterMenu('crispy-bites')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Crispy Bites</button>
+                    <button onclick="filterMenu('tachos&nachos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Tachos & Nachos</button>
+                    <button onclick="filterMenu('tandoori')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Tandoori</button>
+                    <button onclick="filterMenu('momos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Momos</button>
+                    <button onclick="filterMenu('wraps')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Wraps</button>
+                    <button onclick="filterMenu('sandwiches')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Sandwiches</button>
+                    <button onclick="filterMenu('maggi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Maggie</button>
+                    <button onclick="filterMenu('burgers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Burgers</button>
+                    <button onclick="filterMenu('pasta')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Pasta</button>
+                    <button onclick="filterMenu('pizza')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Pizza</button>
+                    <button onclick="filterMenu('millet-kitchidi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Millet Kitchidi</button>
+                    <button onclick="filterMenu('curry-rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Curry Rice Bowls</button>
+                    <button onclick="filterMenu('rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Rice Bowls</button>
+                    <button onclick="filterMenu('sizzlers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Sizzlers</button>
+                    <button onclick="filterMenu('omelettes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Omelettes</button>
+
+                </div>
+
+            </div>
+
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Tablet Menu -->
+        <div class="tablet-only max-w-4xl mx-auto px-4 sm:px-6 py-12">
+            <div class="text-center mb-10">
+                <h1 class="  text-2xl font-bold text-gray-800 mb-4">Our Complete Menu</h1>
+                <p class="  text-sm text-gray-600 mb-6">Crafted with love, served with care</p>
                 
-                // Close mobile menu
-                document.getElementById('mobile-menu').classList.add('hidden');
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button onclick="filterMenu('all')" class="menu-filter-btn active px-3 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors">All</button>
+                    <button onclick="filterMenu('hot-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Hot Coffee</button>
+                    <button onclick="filterMenu('cold-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Cold Coffee</button>
+                    <button onclick="filterMenu('clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Clear Teas</button>
+                    <button onclick="filterMenu('cold-clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Cold Clear Teas</button>
+                    <button onclick="filterMenu('shakes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Shakes</button>
+                    <button onclick="filterMenu('mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Mojitos</button>
+                    <button onclick="filterMenu('real-fruit-mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Real Fruit</button>
+                    <button onclick="filterMenu('almond-gum-special')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Almond Gum Special</button>
+                    <button onclick="filterMenu('lassi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Lassi</button>
+                    <button onclick="filterMenu('cold-pressed-juices')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Cold Juices</button>
+                    <button onclick="filterMenu('fruit-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Fruit Bowls</button>
+                    <button onclick="filterMenu('desserts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Desserts</button>
+                    <button onclick="filterMenu('ice-cream-scoops')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Ice Cream Scoops</button>
+                    <button onclick="filterMenu('soups')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Soups</button>
+                    <button onclick="filterMenu('salads')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Salads</button>
+                    <button onclick="filterMenu('garlic-breadandtoasts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">garlic Breads & Toasts</button>
+                    <button onclick="filterMenu('deep-fries')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Deep Fries</button>
+                    <button onclick="filterMenu('potato-snacks')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Potato Snacks</button>
+                    <button onclick="filterMenu('crispy-bites')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Crispy Bites</button>
+                    <button onclick="filterMenu('tachos&nachos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Tachos & Nachos</button>
+                    <button onclick="filterMenu('tandoori')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Tandoori</button>
+                    <button onclick="filterMenu('momos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Momos</button>
+                    <button onclick="filterMenu('wraps')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Wraps</button>
+                    <button onclick="filterMenu('sandwiches')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Sandwiches</button>
+                    <button onclick="filterMenu('maggi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Maggie</button>
+                    <button onclick="filterMenu('burgers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Burgers</button>
+                    <button onclick="filterMenu('pasta')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Pasta</button>
+                    <button onclick="filterMenu('pizza')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Pizza</button>
+                    <button onclick="filterMenu('millet-kitchidi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Millet Kitchidi</button>
+                    <button onclick="filterMenu('curry-rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Curry Rice Bowls</button>
+                    <button onclick="filterMenu('rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Rice Bowls</button>
+                    <button onclick="filterMenu('sizzlers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Sizzlers</button>
+                    <button onclick="filterMenu('omelettes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Omelettes</button>
+
+                </div>
+
+            </div>
+
+            <div id="menu-grid-tablet" class="grid grid-cols-2 gap-6">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-only px-4 py-8 pb-20">
+            <div class="text-center mb-6">
+                <h1 class="  text-2xl font-bold text-gray-600 mb-3">Our Menu</h1>
+                <p class="text-gray-600 mb-4">Crafted with love</p>
                 
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                <div class="overflow-x-auto">
+                    <div class="flex space-x-2 pb-2">
+                        <button onclick="filterMenu('all')" class="menu-filter-btn active px-3 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors   ">All</button>
+                        <button onclick="filterMenu('hot-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Hot Coffee</button>
+                        <button onclick="filterMenu('cold-coffee')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Cold Coffee</button>
+                        <button onclick="filterMenu('clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Clear Teas</button>
+                        <button onclick="filterMenu('cold-clear-teas')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Cold Clear Teas</button>
+                        <button onclick="filterMenu('shakes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Shakes</button>
+                        <button onclick="filterMenu('mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Mojitos</button>
+                        <button onclick="filterMenu('real-fruit-mojitos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Real Fruit</button>
+                        <button onclick="filterMenu('almond-gum-special')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Almond Gum Special</button>
+                        <button onclick="filterMenu('lassi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Lassi</button>
+                        <button onclick="filterMenu('cold-pressed-juices')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Cold Juices</button>
+                        <button onclick="filterMenu('fruit-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Fruit Bowls</button>
+                        <button onclick="filterMenu('desserts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Desserts</button>
+                        <button onclick="filterMenu('ice-cream-scoops')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Ice Cream Scoops</button>
+                        <button onclick="filterMenu('soups')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Soups</button>
+                        <button onclick="filterMenu('salads')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Salads</button>
+                        <button onclick="filterMenu('garlic-breadandtoasts')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">garlic Breads & Toasts</button>
+                        <button onclick="filterMenu('deep-fries')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Deep Fries</button>
+                        <button onclick="filterMenu('potato-snacks')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Potato Snacks</button>
+                        <button onclick="filterMenu('crispy-bites')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Crispy Bites</button>
+                        <button onclick="filterMenu('tachos&nachos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Tachos & Nachos</button>
+                        <button onclick="filterMenu('tandoori')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Tandoori</button>
+                        <button onclick="filterMenu('momos')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Momos</button>
+                        <button onclick="filterMenu('wraps')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Wraps</button>
+                        <button onclick="filterMenu('sandwiches')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Sandwiches</button>
+                        <button onclick="filterMenu('maggi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Maggie</button>
+                        <button onclick="filterMenu('burgers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Burgers</button>
+                        <button onclick="filterMenu('pasta')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Pasta</button>
+                        <button onclick="filterMenu('pizza')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Pizza</button>
+                        <button onclick="filterMenu('millet-kitchidi')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Millet Kitchidi</button>
+                        <button onclick="filterMenu('curry-rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Curry Rice Bowls</button>
+                        <button onclick="filterMenu('rice-bowls')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Rice Bowls</button>
+                        <button onclick="filterMenu('sizzlers')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors ">Sizzlers</button>
+                        <button onclick="filterMenu('omelettes')" class="menu-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   ">Omelettes</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="menu-grid-mobile" class="space-y-4">
+                <!-- Menu items will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery-page" class="page pt-16">
+        <!-- Desktop Gallery -->
+        <div class="desktop-only max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                <h1 class="  text-3xl md:  text-4xl font-bold text-gray-800 mb-4">Our Gallery</h1>
+                <p class="  text-lg text-gray-600 mb-8">Experience the atmosphere and artistry of Teas & Trees</p>
                 
-                // Trigger animations
-                setTimeout(() => {
-                    handleScrollAnimations();
-                }, 100);
-            }
-        }
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                    <button onclick="filterGallery('all')" class="gallery-filter-btn active px-6 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors">All Photos</button>
+                    <button onclick="filterGallery('interior')" class="gallery-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Interior</button>
+                    <button onclick="filterGallery('drinks')" class="gallery-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Drinks</button>
+                    <button onclick="filterGallery('food')" class="gallery-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Food</button>
+                     </div>
+            </div>
 
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Gallery tiles will be populated by JavaScript -->
+            </div>
+        </div>
 
-        // Fade in animation on scroll
-        function handleScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
+        <!-- Tablet Gallery -->
+        <div class="tablet-only max-w-6xl mx-auto px-4 sm:px-6 py-12">
+            <div class="text-center mb-10">
+                <h1 class="  text-2xl font-bold text-gray-800 mb-4">Our Gallery</h1>
+                <p class="  text-sm text-gray-600 mb-6">Experience the atmosphere and artistry</p>
                 
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
+                <div class="flex flex-wrap justify-center gap-3 mb-6">
+                    <button onclick="filterGallery('all')" class="gallery-filter-btn active px-4 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors   text-xs">All</button>
+                    <button onclick="filterGallery('interior')" class="gallery-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">Interior</button>
+                    <button onclick="filterGallery('drinks')" class="gallery-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">Drinks</button>
+                    <button onclick="filterGallery('food')" class="gallery-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">Food</button>
+                    </div>
+            </div>
+
+            <div id="gallery-grid-tablet" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Gallery tiles will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Mobile Gallery -->
+        <div class="mobile-only px-4 py-8 pb-20">
+            <div class="text-center mb-6">
+                <h1 class="  text-xl font-bold text-gray-800 mb-3">Gallery</h1>
+                <p class="text-gray-600 mb-4">Our atmosphere & artistry</p>
+                
+                <div class="overflow-x-auto">
+                    <div class="flex space-x-2 pb-2">
+                        <button onclick="filterGallery('all')" class="gallery-filter-btn active px-3 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition-colors  ">All</button>
+                        <button onclick="filterGallery('interior')" class="gallery-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Interior</button>
+                        <button onclick="filterGallery('drinks')" class="gallery-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Drinks</button>
+                        <button onclick="filterGallery('food')" class="gallery-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Food</button>
+                         </div>
+                </div>
+            </div>
+
+            <div id="gallery-grid-mobile" class="grid grid-cols-2 gap-3">
+                <!-- Gallery tiles will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="max-w-4xl max-h-full p-4 relative">
+            <button onclick="closeGalleryModal()" class="absolute top-4 right-4 bg-black bg-opacity-70 text-white   text-xl hover:bg-opacity-90 hover:text-gray-200 z-10 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200">&times;</button>
+            <div id="gallery-modal-content" class="bg-white rounded-lg overflow-hidden">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Item Details Modal -->
+    <div id="menu-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="max-w-4xl max-h-full p-4 relative w-full">
+            <button onclick="closeMenuModal()" class="absolute top-4 right-4 bg-black bg-opacity-70 text-white   text-xl hover:bg-opacity-90 hover:text-gray-200 z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-150">&times;</button>
+            <div id="menu-modal-content" class="bg-white rounded-lg overflow-hidden max-h-full overflow-y-auto">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Page -->
+    <div id="reviews-page" class="page pt-16">
+        <!-- Desktop Reviews -->
+        <div class="desktop-only max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-16">
+                <h1 class="  text-3xl md:  text-4xl font-bold text-gray-800 mb-4">Customer Reviews</h1>
+                <div class="flex justify-center items-center space-x-4 mb-8">
+                    <span class="star-rating   text-3xl">★★★★☆</span>
+                    <div class="text-left">
+                        <div class="  text-xl font-bold text-gray-800">4.3 out of 5</div>
+                        <div class="text-gray-600">Based on 1,935 Google Reviews</div>
+                    </div>
+                </div>
+                
+                <div class="max-w-md mx-auto mb-8">
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <span class="  text-xs w-8">5★</span>
+                            <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full" style="width: 58%"></div>
+                            </div>
+                            <span class="  text-xs text-gray-600 w-12">58%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="  text-xs w-8">4★</span>
+                            <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full" style="width: 28%"></div>
+                            </div>
+                            <span class="  text-xs text-gray-600 w-12">28%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="  text-xs w-8">3★</span>
+                            <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full" style="width: 9%"></div>
+                            </div>
+                            <span class="  text-xs text-gray-600 w-12">9%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="  text-xs w-8">2★</span>
+                            <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full" style="width: 3%"></div>
+                            </div>
+                            <span class="  text-xs text-gray-600 w-12">3%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="  text-xs w-8">1★</span>
+                            <div class="flex-1 mx-4 bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-400 h-2 rounded-full" style="width: 2%"></div>
+                            </div>
+                            <span class="  text-xs text-gray-600 w-12">2%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterReviews('all')" class="review-filter-btn active px-6 py-2 rounded-full bg-green-600 text-white font-semibold transition-colors">All Reviews</button>
+                <button onclick="filterReviews('recent')" class="review-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Most Recent</button>
+                <button onclick="filterReviews('helpful')" class="review-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">Most Helpful</button>
+                <button onclick="filterReviews('5star')" class="review-filter-btn px-6 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors">5 Star Only</button>
+            </div>
+
+            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Review items will be populated by JavaScript -->
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg max-w-2xl mx-auto">
+                <h3 class="  text-xl font-bold text-gray-800 mb-6 text-center">Share Your Experience</h3>
+                <form id="feedback-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" id="customer-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Your name" required>
+                        </div>
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="customer-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block   text-xs font-medium text-gray-700 mb-2">Rating</label>
+                        <div class="flex space-x-2">
+                            <button type="button" class="star-btn   text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="1">★</button>
+                            <button type="button" class="star-btn   text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="2">★</button>
+                            <button type="button" class="star-btn   text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="3">★</button>
+                            <button type="button" class="star-btn   text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="4">★</button>
+                            <button type="button" class="star-btn   text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-rating="5">★</button>
+                        </div>
+                        <input type="hidden" id="rating-value" value="0">
+                    </div>
+
+                    <div>
+                        <label class="block   text-xs font-medium text-gray-700 mb-2">Your Review</label>
+                        <textarea id="review-text" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Tell us about your experience..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tablet Reviews -->
+        <div class="tablet-only max-w-6xl mx-auto px-4 sm:px-6 py-12">
+            <div class="text-center mb-12">
+                <h1 class="  text-2xl font-bold text-gray-800 mb-4">Customer Reviews</h1>
+                <div class="flex justify-center items-center space-x-4 mb-6">
+                    <span class="star-rating   text-2xl">★★★★☆</span>
+                    <div class="text-left">
+                        <div class="  text-lg font-bold text-gray-800">4.3 out of 5</div>
+                        <div class="text-gray-600   text-xs">Based on 1,932 Reviews</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button onclick="filterReviews('all')" class="review-filter-btn active px-4 py-2 rounded-full bg-green-600 text-white font-semibold transition-colors   text-xs">All</button>
+                <button onclick="filterReviews('recent')" class="review-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">Recent</button>
+                <button onclick="filterReviews('helpful')" class="review-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">Helpful</button>
+                <button onclick="filterReviews('5star')" class="review-filter-btn px-4 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors   text-xs">5 Star</button>
+            </div>
+
+            <div id="reviews-grid-tablet" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <!-- Review items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Mobile Reviews -->
+        <div class="mobile-only px-4 py-8 pb-20">
+            <div class="text-center mb-8">
+                <h1 class="  text-xl font-bold text-gray-800 mb-3">Reviews</h1>
+                <div class="flex justify-center items-center space-x-3 mb-4">
+                    <span class="star-rating   text-xl">★★★★☆</span>
+                    <div class="text-left">
+                        <div class="  text-sm font-bold text-gray-800">4.3/5</div>
+                        <div class="text-gray-600 text-xs">1,932 reviews</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto mb-6">
+                <div class="flex space-x-2 pb-2">
+                    <button onclick="filterReviews('all')" class="review-filter-btn active px-3 py-2 rounded-full bg-green-600 text-white font-semibold transition-colors  ">All</button>
+                    <button onclick="filterReviews('recent')" class="review-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Recent</button>
+                    <button onclick="filterReviews('helpful')" class="review-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">Helpful</button>
+                    <button onclick="filterReviews('5star')" class="review-filter-btn px-3 py-2 rounded-full border-2 border-green-600 text-green-600 font-semibold transition-colors  ">5 Star</button>
+                </div>
+            </div>
+
+            <div id="reviews-grid-mobile" class="space-y-4">
+                <!-- Review items will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page pt-16">
+        <!-- Desktop Contact -->
+        <div class="desktop-only max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-16">
+                <h1 class="  text-3xl md:  text-4xl font-bold text-gray-800 mb-4">Contact Us</h1>
+                <p class="  text-lg text-gray-600 mb-8">We'd love to hear from you. Get in touch!</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-8">
+                        <h2 class="  text-xl font-bold text-gray-800 mb-6">Visit Our Café</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="  text-xl">📍</div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Address</h3>
+                                    <p class="text-gray-600">1st Lane, Pandaripuram Rd, Lakshmipuram, Ashok Nagar,<br>Guntur, Andhra Pradesh 522007</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="  text-xl">📞</div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Phone</h3>
+                                    <p class="text-gray-600">072868-33999</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="  text-xl">✉️</div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Email</h3>
+                                    <p class="text-gray-600">support@teasntrees.in</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="  text-xl">🌐</div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Website</h3>
+                                    <p class="text-gray-600">www.teasntrees.in</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opening Hours -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-8">
+                        <h2 class="  text-xl font-bold text-gray-800 mb-6">Opening Hours</h2>
+                        
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium text-gray-800">Monday - Sunday</span>
+                                <span class="text-gray-600">11:00 AM - 11:00 PM</span>
+                            </div>
+                        </div>
+                
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-8">
+                        <h2 class="  text-xl font-bold text-gray-800 mb-6">Follow Us</h2>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="https://www.facebook.com/teasntrees.in/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+                                <span class="  text-lg">📘</span>
+                                <span class="font-medium text-gray-800">Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/teasntrees.in/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow">
+                                <span class="  text-lg">📷</span>
+                                <span class="font-medium text-gray-800">Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <h2 class="  text-xl font-bold text-gray-800 mb-6">Send us a Message</h2>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block   text-xs font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="first-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="John" required>
+                            </div>
+                            <div>
+                                <label class="block   text-xs font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="last-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Doe" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="john@example.com" required>
+                        </div>
+
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="(555) 123-4567">
+                        </div>
+
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Subject</label>
+                            <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="reservation">Reservation</option>
+                                <option value="catering">Catering Services</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="complaint">Complaint</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block   text-xs font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Tell us how we can help you..." required></textarea>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="newsletter" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                            <label for="newsletter" class="ml-2 block   text-xs text-gray-700">
+                                Subscribe to our newsletter for updates and special offers
+                            </label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="mt-16">
+                <h2 class="  text-2xl font-bold text-gray-800 mb-8 text-center">Find Us</h2>
+                <div class="bg-gray-200 rounded-xl h-130 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="  text-5xl mb-4">
+                             <iframe 
+                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.271512537432!2d80.4309655!3d16.309065399999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a75d5803c1ad5%3A0x575d7ce7d4586540!2sTEAS%20N%20TREES!5e0!3m2!1sen!2sin!4v1758987737969!5m2!1sen!2sin" 
+                             width="1200" height="600"
+                              style="border:0;" allowfullscreen="" 
+                              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tablet Contact -->
+        <div class="tablet-only max-w-6xl mx-auto px-4 sm:px-6 py-12">
+            <div class="text-center mb-12">
+                <h1 class="  text-2xl font-bold text-gray-800 mb-4">Contact Us</h1>
+                <p class="  text-sm text-gray-600 mb-6">We'd love to hear from you!</p>
+            </div>
+
+            <div class="grid gap-8">
+                <!-- Contact Info -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+                        <h2 class="  text-lg font-bold text-gray-800 mb-4">Visit Our Café</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">📍</span>
+                                <div>
+                                    <p class="font-medium text-gray-800">1st Lane, Pandaripuram Rd, Lakshmipuram, Ashok Nagar, </p>
+                                    <p class="  text-xs text-gray-600">Guntur, Andhra Pradesh 522007</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">📞</span>
+                                <p class="text-gray-600">072868-33999</p>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="  text-lg">✉️</span>
+                                <p class="text-gray-600">support@teasntrees.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+                        <h2 class="  text-lg font-bold text-gray-800 mb-4">Opening Hours</h2>
+                        <div class="space-y-2   text-xs">
+                            <div class="flex justify-between">
+                                <span class="font-medium">Mon-Sun</span>
+                                <span>11:00 AM - 11:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h2 class="  text-lg font-bold text-gray-800 mb-4">Send us a Message</h2>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="First Name" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent   text-xs" required>
+                            <input type="text" placeholder="Last Name" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent   text-xs" required>
+                        </div>
+                        <input type="email" placeholder="Email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent   text-xs" required>
+                        <textarea rows="4" placeholder="Your message..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent   text-xs" required></textarea>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors   text-xs">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Contact -->
+        <div class="mobile-only px-4 py-8 pb-20">
+            <div class="text-center mb-6">
+                <h1 class="  text-xl font-bold text-gray-800 mb-3">Contact Us</h1>
+                <p class="text-gray-600 mb-4">Get in touch!</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Quick Contact -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4">
+                    <h2 class="  text-sm font-bold text-gray-800 mb-4">Quick Contact</h2>
+                    <div class="space-y-3">
+                        <a href="tel:+15551234567" class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                            <span class="  text-lg">📞</span>
+                            <div>
+                                <p class="font-medium text-gray-800">Call Us</p>
+                                <p class="  text-sm text-gray-600"><strong>072868-33999</p>
+                            </div>
+                        </a>
+                        <a href="mailto:hello@teasandtrees.com" class="flex items-center space-x-3 p-3 bg-white rounded-lg">
+                            <span class="  text-lg">✉️</span>
+                            <div>
+                                <p class="font-medium text-gray-800">Email Us</p>
+                                <p class="  text-sm text-gray-600">support@teasntrees.in</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4">
+                    <h2 class="  text-sm font-bold text-gray-800 mb-4">Visit Us</h2>
+                    <div class="flex items-start space-x-3">
+                        <span class="  text-lg">📍</span>
+                        <div>
+                            <p class="font-medium text-gray-800">1st Lane, Pandaripuram Rd, Lakshmipuram, Ashok Nagar,</p>
+                            <p class="  text-sm text-gray-600">Guntur, Andhra Pradesh 522007 </p>
+                            <p class="  text-sm text-gray-600 mt-2">Mon-Sun: 11AM-11PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Form -->
+                <div class="bg-white rounded-xl p-4 shadow-lg">
+                    <h2 class="  text-sm font-bold text-gray-800 mb-4">Send Message</h2>
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Your Name" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent btn-touch" required>
+                        <input type="email" placeholder="Your Email" class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent btn-touch" required>
+                        <textarea rows="4" placeholder="Your message..." class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" required></textarea>
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors btn-touch">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="script.js"></script>
+<script>
+(function()
+{
+    function c()
+    {
+        var b=a.contentDocument||a.contentWindow.document;
+        if(b)
+        {
+            var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98596acb83397f5c',t:'MTc1ODk1OTUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)
+
         }
-
-        // Navigation link active state
-        function updateActiveNavLink(activePageId = null) {
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('text-primary', 'font-semibold');
-                if (activePageId && link.getAttribute('data-page') === activePageId) {
-                    link.classList.add('text-primary', 'font-semibold');
-                }
-            });
+    }
+        if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);
+        else
+        {
+            var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}
         }
-
-        // Service modal functions
-        function openServiceModal(serviceName) {
-            alert(`Thank you for your interest in ${serviceName}! Please fill out the contact form and we'll send you a detailed quote within 24 hours.`);
-            showPage('contact');
-        }
-
-        // Course details function
-        function showCourseDetails(courseType) {
-            const courseDetails = {
-                'abap': 'ABAP Programming covers Object-Oriented ABAP, ALV Reports, BAPIs, Enhancement Framework, Web Dynpro ABAP, and modern development techniques. Includes hands-on coding exercises and real-world scenarios.',
-                'abap_hana': 'ABAP on HANA focuses on Code-to-Data paradigm, Core Data Services (CDS), AMDP, SQLScript, and performance optimization techniques for HANA database. Learn to leverage in-memory computing.',
-                'workflow': 'SAP Workflow covers Business Process Automation, Workflow Builder, Custom Workflow Development, Integration with SAP modules, and advanced workflow patterns for enterprise automation.',
-                'basis': 'SAP Basis covers System Installation, Client Administration, Transport Management, Performance Monitoring, Security Configuration, and System Landscape optimization for enterprise environments.',
-                'pi_po': 'SAP PI/PO covers Enterprise Application Integration, Message Mapping, Interface Development, B2B Integration, and advanced integration patterns for complex system landscapes.',
-                'cpi': 'SAP CPI covers Cloud Platform Integration, Hybrid Integration Scenarios, API Management, Pre-built Integration Content, and modern cloud integration patterns for digital transformation.',
-                'fico': 'SAP FICO covers Financial Accounting and Controlling with S/4HANA Universal Journal, Embedded Analytics, New Asset Accounting, Central Finance, and modern financial processes.',
-                'trm': 'SAP TRM covers Treasury and Risk Management including Cash Management, Market Risk Management, Credit Risk Assessment, and Financial Risk Analytics for comprehensive treasury operations.',
-                'mm': 'SAP MM covers Materials Management with S/4HANA innovations including Fiori Apps, Simplified Procurement, Advanced Analytics, and integrated supply chain processes.',
-                'ewm': 'SAP EWM covers Extended Warehouse Management including Advanced Warehouse Operations, Automation Integration, Labor Management, and supply chain optimization techniques.'
-            };
-            
-            alert(courseDetails[courseType] || 'Course details will be provided during enrollment.');
-        }
-
-        // FAQ toggle function
-        function toggleFAQ(faqNumber) {
-            const content = document.getElementById(`faq-content-${faqNumber}`);
-            const icon = document.getElementById(`faq-icon-${faqNumber}`);
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Contact form submission
-        function handleContactForm(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-            
-            
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const service = document.getElementById('service').value;
-    const budget = document.getElementById('budget').value;
-    const message = document.getElementById('message').value.trim();
-
-    // Email address to receive the message
-    const mailTo = 'manuenit@outlook.in';
-
-    let subject = encodeURIComponent('Contact Form Submission');
-    let body = encodeURIComponent(
-        `First Name: ${firstName}\n` +
-        `Last Name: ${lastName}\n` +
-        `Email: ${email}\n` +
-        `Phone: ${phone}\n` +
-        `Service Interested In: ${service}\n` +
-        `Project Budget: ${budget}\n` +
-        `Project Details:\n${message}\n`
-    );
-
-    // Create the full mailto link
-    let mailtoLink = `mailto:${mailTo}?subject=${subject}&body=${body}`;
-
-    // Open the user's default mail client
-    window.location.href = mailtoLink;
-    });
-  
-        }
-
-        // Enrollment modal functions
-        function openEnrollModal(courseName) {
-            document.getElementById('course-name').textContent = courseName;
-            document.getElementById('enrollment-modal').classList.remove('hidden');
-        }
-
-        function closeEnrollModal() {
-            document.getElementById('enrollment-modal').classList.add('hidden');
-        }
-
-        // Enrollment form submission
-        document.getElementById('enrollment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Enrollment request submitted successfully! Our team will contact you within 24 hours.');
-            closeEnrollModal();
-            this.reset();
-        });
-
-        // Close modal when clicking outside
-        document.getElementById('enrollment-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeEnrollModal();
-            }
-        });
-
-        // Event listeners
-        window.addEventListener('scroll', function() {
-            handleScrollAnimations();
-        });
-
-        window.addEventListener('load', function() {
-            // Initialize with home page
-            showPage('home');
-            handleScrollAnimations();
-        });
-
-        // Contact form event listener
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', handleContactForm);
-            }
-        });
-        
+    }
+}
+)
+();
     </script>
-    
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e7e2d3b48bbaaa',t:'MTc1Nzc2OTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-
-
-
 </body>
 </html>
